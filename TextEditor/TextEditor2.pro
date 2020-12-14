@@ -9,14 +9,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    TextEditor.cpp \
-    main.cpp
+    main.cpp \
+    shortcut.cpp \
+    texteditor.cpp
 
 HEADERS += \
-    TextEditor.h
+    shortcut.h \
+    texteditor.h
 
 FORMS += \
-    TextEditor.ui
+    shortcut.ui \
+    texteditor.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -24,4 +27,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    help.qrc
+    help.qrc \
+    translate.qrc
+
+TRANSLATIONS += QtLanguage_en.ts
+CODECFORSRC = UTF-8

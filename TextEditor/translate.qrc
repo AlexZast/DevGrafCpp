@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/translate">
+        <file>QtLanguage_en.qm</file>
+    </qresource>
+</RCC>

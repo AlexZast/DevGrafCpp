@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>TextEditor</class>
+ <widget class="QMainWindow" name="TextEditor">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>855</width>
-    <height>630</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>TextEditor</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>1</number>
     </property>
@@ -22,35 +22,16 @@
      <number>1</number>
     </property>
     <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
      <number>1</number>
     </property>
+    <property name="rightMargin">
+     <number>2</number>
+    </property>
     <property name="bottomMargin">
-     <number>0</number>
+     <number>1</number>
     </property>
     <item>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="inputMethodHints">
-       <set>Qt::ImhMultiLine</set>
-      </property>
-      <property name="lineWidth">
-       <number>1</number>
-      </property>
-      <property name="tabStopWidth">
-       <number>71</number>
-      </property>
-      <property name="cursorWidth">
-       <number>1</number>
-      </property>
-     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
     </item>
    </layout>
   </widget>
@@ -59,7 +40,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>855</width>
+     <width>800</width>
      <height>20</height>
     </rect>
    </property>
@@ -67,90 +48,104 @@
     <property name="title">
      <string>Файл</string>
     </property>
+    <addaction name="action_8"/>
     <addaction name="action"/>
-    <addaction name="action_6"/>
-    <addaction name="action_5"/>
+    <addaction name="action_2"/>
     <addaction name="action_3"/>
     <addaction name="action_4"/>
-    <addaction name="separator"/>
+    <addaction name="action_5"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>Справка</string>
     </property>
-    <addaction name="action_2"/>
+    <addaction name="action_9"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
      <string>Язык</string>
     </property>
-    <addaction name="separator"/>
-    <addaction name="action_8"/>
-    <addaction name="actionEnglish"/>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+    <addaction name="action_10"/>
    </widget>
    <addaction name="menu"/>
+   <addaction name="menu_4"/>
    <addaction name="menu_2"/>
    <addaction name="menu_3"/>
-  </widget>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>BottomToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
    <property name="text">
-    <string>Открыть файл              ctrl+O</string>
+    <string>Открыть файл</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="action_3">
-   <property name="text">
-    <string>Сохранить как        sf+ctrl+S</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+S</string>
-   </property>
-  </action>
-  <action name="action_4">
-   <property name="text">
-    <string>Выход</string>
-   </property>
-  </action>
   <action name="action_2">
    <property name="text">
-    <string>Вызвать справку</string>
+    <string>Открыть файл только для чтения</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
    </property>
   </action>
-  <action name="action_5">
+  <action name="action_3">
    <property name="text">
-    <string>Сохранить                    ctrl+S</string>
+    <string>Сохранить</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
   </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Сохранить как</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Выйти</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
   <action name="action_6">
    <property name="text">
-    <string>Открыть для чтения</string>
+    <string>Русский</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>English</string>
    </property>
   </action>
   <action name="action_8">
    <property name="text">
-    <string>Руcский</string>
+    <string>Новый файл</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
-  <action name="actionEnglish">
+  <action name="action_9">
    <property name="text">
-    <string>English</string>
+    <string>Вызвать справку</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>Горячие клавиши</string>
    </property>
   </action>
  </widget>
