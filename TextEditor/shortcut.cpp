@@ -100,3 +100,4 @@ void shortcut::on_pushButton_clicked()
 {
     close();
 }
+

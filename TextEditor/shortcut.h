@@ -22,6 +22,8 @@ public slots:
 private slots:
     void on_tableWidget_clicked(const QModelIndex &index);
 
+    void on_pushButton_clicked();
+
 protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
 
