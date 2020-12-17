@@ -45,13 +45,11 @@ void shortcut::resirvedPointer(QMenu *p)
     }
 }
 
-
 //когда мы в таблице выбираем сочетание, то записываем в переменные адрес действия и индекс строки для использования при изменении
 void shortcut::on_tableWidget_clicked(const QModelIndex &index)
 {
-        qDebug() << "colum= " << index.column() <<",  row = " << index.row();
+       // qDebug() << "colum= " << index.column() <<",  row = " << index.row();
         if(index.column()){
-            qDebug() << "click";
             current = pn->actions().at(index.row());
             indx = index.row();
             flage = true;
