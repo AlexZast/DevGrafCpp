@@ -2,7 +2,8 @@
 #include "ui_shortcut.h"
 #include "texteditor.h"
 
-
+#include <QDebug>
+#include <QKeyEvent>
 
 shortcut::shortcut(QWidget *parent) :
     QDialog(parent),
@@ -58,42 +59,45 @@ void shortcut::on_tableWidget_clicked(const QModelIndex &index)
 }
 
 //Перегруженный фильтр нажатий, без него через стандартный keyEvent не заработало, вязто из документации QT
-// Записывает в массив номера нажатых клавишь до тех пор пока какая-либо клавиша не отжата, т.к. QKeySequence обрабатывает до 4-х нажатий, то и массив на 4 значения
-// Так же тут небольшая проблема, при нажатии на ctrl и shift выводит старанные номера, которые не конвертируются обратно в данные клавиши :(
+//Ошибка устранена, модифаеры обрабатываются отдельно
 bool shortcut::eventFilter(QObject *obj, QEvent *event)
 {
     if (event->type() == QEvent::KeyPress) {
-            QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-            //qDebug("Ate key press %d", keyEvent->key());
-            if(current && count < 5){
-                shor[count] = keyEvent->key();
-                qDebug() << shor[count];
-                ++count;
-            }
-            return true;
-        } else {
-            return QObject::eventFilter(obj, event);
-        }
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        Qt::KeyboardModifiers modifiers = keyEvent->modifiers();
+        qDebug() << keyEvent->key();
+        keyInt = keyEvent->key();
+        if(modifiers & Qt::ShiftModifier)
+            keyInt += Qt::SHIFT;
+        if(modifiers & Qt::ControlModifier)
+            keyInt += Qt::CTRL;
+        if(modifiers & Qt::AltModifier)
+            keyInt += Qt::ALT;
+        if(modifiers & Qt::MetaModifier)
+            keyInt += Qt::META;
+        QString keyText = keyEvent->text();
+        keyText = keyEvent->text();
+        qDebug() << QKeySequence(keyInt).toString(QKeySequence::NativeText);
+        return true;
+    } else {
+        return QObject::eventFilter(obj, event);
+    }
 }
 
-
-//Как только клавиша отжата, записываем ранее нажатые клавиши(в массиве) в сочетание выбранного действия,
+//Как только клавиша отжата, записываем ранее нажатые клавиши в сочетание выбранного действия,
 //flage введен что бы запись происходила только один раз после нажатия(выбора) ячейки
 void shortcut::keyReleaseEvent(QKeyEvent *event)
 {
-    if(flage == true){
-        qDebug() << "Realise EVENT = " << shor[0] << shor[1] << shor[2] << shor[3]; // какие клавиши были нажаты
-        current->setShortcut(QKeySequence(shor[0],shor[1],shor[2],shor[3]));
-        qDebug() << current->shortcut().toString(); //Проверка сочетания
+    if(flage == true && event->type() == QEvent::KeyRelease){
+        //qDebug() << "Realise EVENT = " << shor[0] << shor[1] << shor[2] << shor[3]; // какие клавиши были нажаты
+       current->setShortcut(QKeySequence(keyInt));
+       // qDebug() << current->shortcut().toString(); //Проверка сочетания
         QTableWidgetItem *item2 = new QTableWidgetItem;
         item2->setText(current->shortcut().toString()); //Повторная запись в таблицу
         ui->tableWidget->setItem(indx,1,item2);
     }
     flage = false;                          // защчита от повторной записи после первой
     count = 0;                              // сброс счетчика, используется как защита при записи массива (мах 4 значения)
-    for(int i = 0; i < 4; ++i){             //Обнуление массива, если следующее сочетание будет содержать меньше клавишь чем предыдущее
-        shor[i] = 0;
-    }
 }
 
 void shortcut::on_pushButton_clicked()
