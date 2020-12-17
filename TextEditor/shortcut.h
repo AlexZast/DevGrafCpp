@@ -35,7 +35,9 @@ private:
 
     QMenu *pn = 0;
     int count = 0;
-    qint32 shor[4] = {0, 0, 0, 0};
+
+    int keyInt = 0;
+
     int indx = 0;
     bool flage = false;
     QAction *current = nullptr;
