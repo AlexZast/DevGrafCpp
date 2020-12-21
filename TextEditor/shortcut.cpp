@@ -95,7 +95,6 @@ void shortcut::keyReleaseEvent(QKeyEvent *event)
         ui->tableWidget->setItem(indx,1,item2);
     }
     flage = false;                          // защчита от повторной записи после первой
-    count = 0;                              // сброс счетчика, используется как защита при записи массива (мах 4 значения)
 }
 
 void shortcut::on_pushButton_clicked()

@@ -1,0 +1,37 @@
+QWidget {background-color: black;  color:rgb(240,255,220)}
+
+QMenuBar {
+    background-color: rgba(200, 100, 100, 150);
+    spacing: 10px;
+}
+
+QMenuBar::item {
+    padding: 1px 4px;
+    background: transparent;
+    border-radius: 4px;
+}
+
+QMenuBar::item:selected {
+    background: #080808;
+}
+
+QMenuBar::item:pressed {
+    background: #888888;
+}
+
+QMenu {
+    background-color: grey;
+    padding-left: 8px;
+    padding-right 2px;
+    margin: 2px;
+}
+
+QMenu::item:selected {
+    border-color: darkblue;
+    background: rgba(100, 200, 200, 50);
+}
+
+QMenu::item {
+    border-radius: 4px;
+    padding: 1px 4px;
+}

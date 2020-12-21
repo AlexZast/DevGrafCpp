@@ -34,7 +34,7 @@ private:
     Ui::shortcut *ui;
 
     QMenu *pn = 0;
-    int count = 0;
+   // int count = 0;
 
     int keyInt = 0;
 
