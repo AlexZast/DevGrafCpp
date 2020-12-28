@@ -9,11 +9,13 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    fswidget.cpp \
     main.cpp \
     shortcut.cpp \
     texteditor.cpp
 
 HEADERS += \
+    fswidget.h \
     shortcut.h \
     texteditor.h
 
@@ -28,6 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     help.qrc \
+    style.qrc \
     translate.qrc
 
 TRANSLATIONS += QtLanguage_en.ts

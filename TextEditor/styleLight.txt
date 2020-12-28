@@ -1,0 +1,33 @@
+QWidget {background-color: white; color: dark-blue}
+
+QMenuBar {
+    background-color: rgba(100, 200, 255, 50);
+    spacing: 3px;
+}
+
+QMenuBar::item {
+    padding: 1px 4px;
+    background: transparent;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    border-color: darkblue;
+    background: rgba(100, 150, 222, 150);
+}
+
+QMenuBar::item:selected
+{
+    background: rgb(100, 150, 222);
+}
+
+QMenu
+{
+    padding-left: 8px;
+    margin: 2px;
+}
+
+QMenu::item {
+    border-radius: 4px;
+    padding: 1px 4px;
+}

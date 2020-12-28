@@ -1,16 +1,26 @@
 #include "texteditor.h"
 #include "ui_texteditor.h"
+#include "fswidget.h"
 
 TextEditor::TextEditor(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::TextEditor)
 {
     ui->setupUi(this);
+    loadStyle(":/style/styleLight.txt");
 }
 
 TextEditor::~TextEditor()
 {
     delete ui;
+}
+
+void TextEditor::loadStyle(QString stylePath)
+{
+    QFile file(stylePath);
+    file.open(QIODevice::ReadOnly);
+    QString a = file.readAll();
+    qApp->setStyleSheet(a);
 }
 
 // Новый файл
@@ -116,17 +126,30 @@ void TextEditor::on_action_10_triggered()
 // Установка английского языка
 void TextEditor::on_action_7_triggered()
 {
-    qDebug() << "English click";
     translater.load(":/translate/QtLanguage_en.qm");
     qApp->installTranslator(&translater);
     ui->retranslateUi(this);
-
 }
 
 //Установка русского языка
 void TextEditor::on_action_6_triggered()
 {
-    qDebug() << "Russian click";
     qApp->removeTranslator(&translater);
     ui->retranslateUi(this);
+}
+
+void TextEditor::on_action_15_triggered()
+{
+    loadStyle(":/style/styleDark.txt");
+}
+
+void TextEditor::on_action_14_triggered()
+{
+    loadStyle(":/style/styleLight.txt");
+}
+
+void TextEditor::on_action_11_triggered()
+{
+    FSWidget* m = new FSWidget();
+    m->show();
 }

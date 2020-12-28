@@ -9,11 +9,8 @@
 #include <QFile>
 #include <QByteArray>
 #include <QKeyEvent>
-
 #include <QPushButton>
-
 #include <QDebug>
-
 #include <QMenu>
 
 #include <QApplication>
@@ -32,6 +29,8 @@ public:
     TextEditor(QWidget *parent = nullptr);
     ~TextEditor();
 
+    void loadStyle(QString stylePath);
+
 signals:
     void sendPointer(QMenu *p);
 
@@ -46,25 +45,26 @@ private slots:
 
     void on_action_5_triggered();
 
+    void on_action_6_triggered();
+
+    void on_action_7_triggered();
+
+    void on_action_8_triggered();
+
     void on_action_9_triggered();
 
     void on_action_10_triggered();
 
-    void on_action_8_triggered();
+    void on_action_15_triggered();
 
-    void on_action_7_triggered();
+    void on_action_14_triggered();
 
-    void on_action_6_triggered();
-
-protected:
-//    void mousePressEvent(QMouseEvent *event) override;
-
-
+    void on_action_11_triggered();
 
 private:
     Ui::TextEditor *ui;
     QTranslator translater;
-    QString directory = 0; // Переменная хранит путь директории
+    QString directory = 0; //Переменная хранит путь директории
 
 };
 
