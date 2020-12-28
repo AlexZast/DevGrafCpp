@@ -17,6 +17,10 @@
 #include <QTranslator>
 
 
+#include <QPrinter>
+#include <QPrintDialog>
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class TextEditor; }
 QT_END_NAMESPACE
@@ -60,6 +64,8 @@ private slots:
     void on_action_14_triggered();
 
     void on_action_11_triggered();
+
+    void on_action_12_triggered();
 
 private:
     Ui::TextEditor *ui;

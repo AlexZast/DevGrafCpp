@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -57,6 +57,8 @@
     <addaction name="action_2"/>
     <addaction name="action_3"/>
     <addaction name="action_4"/>
+    <addaction name="action_12"/>
+    <addaction name="separator"/>
     <addaction name="action_5"/>
    </widget>
    <widget class="QMenu" name="menu_2">
@@ -86,17 +88,10 @@
     <addaction name="action_10"/>
     <addaction name="menu_6"/>
    </widget>
-   <widget class="QMenu" name="menu_5">
-    <property name="title">
-     <string>Вызвать виджет</string>
-    </property>
-    <addaction name="action_11"/>
-   </widget>
    <addaction name="menu"/>
    <addaction name="menu_4"/>
    <addaction name="menu_2"/>
    <addaction name="menu_3"/>
-   <addaction name="menu_5"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
@@ -180,6 +175,14 @@
   <action name="action_11">
    <property name="text">
     <string>Виджет</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>Печать</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>
