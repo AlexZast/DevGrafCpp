@@ -153,3 +153,14 @@ void TextEditor::on_action_11_triggered()
     FSWidget* m = new FSWidget();
     m->show();
 }
+
+void TextEditor::on_action_12_triggered()
+{
+qDebug() << "print";
+QPrinter printer;
+   QPrintDialog dlg(&printer, this);
+   dlg.setWindowTitle("Print");
+   if (dlg.exec() != QDialog::Accepted)
+       return;
+ui->plainTextEdit->print(&printer);
+}

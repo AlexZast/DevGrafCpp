@@ -14,115 +14,130 @@
         <translation>File</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="64"/>
-        <location filename="texteditor.cpp" line="110"/>
+        <location filename="texteditor.ui" line="66"/>
+        <location filename="texteditor.cpp" line="111"/>
         <source>Справка</source>
         <translation>Help</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="70"/>
+        <location filename="texteditor.ui" line="72"/>
         <source>Язык</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="77"/>
+        <location filename="texteditor.ui" line="79"/>
         <source>Настройки</source>
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="81"/>
+        <location filename="texteditor.ui" line="83"/>
         <source>Выбор цветовой схемы</source>
         <translation>Сhoice of color scheme</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="97"/>
+        <location filename="texteditor.ui" line="99"/>
         <source>Открыть файл</source>
         <translation>OpenFile</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="100"/>
+        <location filename="texteditor.ui" line="102"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="105"/>
+        <location filename="texteditor.ui" line="107"/>
         <source>Открыть файл только для чтения</source>
         <translation>Open only for read</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="108"/>
+        <location filename="texteditor.ui" line="110"/>
         <source>Ctrl+Shift+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="113"/>
+        <location filename="texteditor.ui" line="115"/>
         <source>Сохранить</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="116"/>
+        <location filename="texteditor.ui" line="118"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="121"/>
+        <location filename="texteditor.ui" line="123"/>
         <source>Сохранить как</source>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="124"/>
+        <location filename="texteditor.ui" line="126"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="129"/>
+        <location filename="texteditor.ui" line="131"/>
         <source>Выйти</source>
         <translation>Exit</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="132"/>
+        <location filename="texteditor.ui" line="134"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="137"/>
+        <location filename="texteditor.ui" line="139"/>
         <source>Русский</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="142"/>
+        <location filename="texteditor.ui" line="144"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="147"/>
+        <location filename="texteditor.ui" line="149"/>
         <source>Новый файл</source>
         <translation>New File</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="150"/>
+        <location filename="texteditor.ui" line="152"/>
         <source>Ctrl+N</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="155"/>
+        <location filename="texteditor.ui" line="157"/>
         <source>Вызвать справку</source>
         <translation>Call Help</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="160"/>
+        <location filename="texteditor.ui" line="162"/>
         <source>Горячие клавиши</source>
         <translation>HotKey</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="165"/>
+        <location filename="texteditor.ui" line="167"/>
         <source>Обычная</source>
         <translation>Default</translation>
     </message>
     <message>
-        <location filename="texteditor.ui" line="170"/>
+        <location filename="texteditor.ui" line="172"/>
         <source>Темная</source>
         <translation>Dark</translation>
+    </message>
+    <message>
+        <location filename="texteditor.ui" line="177"/>
+        <source>Виджет</source>
+        <translation>Widget</translation>
+    </message>
+    <message>
+        <location filename="texteditor.ui" line="182"/>
+        <source>Печать</source>
+        <translation>Print</translation>
+    </message>
+    <message>
+        <location filename="texteditor.ui" line="185"/>
+        <source>Ctrl+P</source>
+        <translation></translation>
     </message>
 </context>
 <context>
