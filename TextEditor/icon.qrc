@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/new_file.png</file>
+        <file>icon/open_file.png</file>
+        <file>icon/save_file.png</file>
+        <file>icon/toCenter.png</file>
+        <file>icon/toLeft.png</file>
+        <file>icon/toRight.png</file>
+        <file>icon/copyFormat.png</file>
+        <file>icon/pastFormat.png</file>
+    </qresource>
+</RCC>

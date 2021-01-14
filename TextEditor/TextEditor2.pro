@@ -30,6 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     help.qrc \
+    icon.qrc \
     style.qrc \
     translate.qrc
 
