@@ -1,6 +1,6 @@
 #include "shortcut.h"
 #include "ui_shortcut.h"
-#include "texteditor.h"
+#include "TextEditor.h"
 
 #include <QDebug>
 #include <QKeyEvent>

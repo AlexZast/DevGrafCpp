@@ -23,6 +23,9 @@
 #include <QFontComboBox>
 #include <QTextCharFormat>
 
+#include <QDate>
+#include <QTime>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TextEditor; }
@@ -66,6 +69,10 @@ private slots:
     void action_textFont(QFont);
     void action_copyFormat();
     void action_pastFormat();
+
+    // Время и дата
+    void action_pastDate();
+    void action_pastTime();
 
 
 private:
