@@ -77,6 +77,16 @@ TextEditor::TextEditor(QWidget *parent)
     connect(pastFormat, SIGNAL(clicked()), this, SLOT(action_pastFormat()));
 
     ui->toolBar->addSeparator();
+
+    //Вставить дату и время
+
+    QPushButton *pastDate = new QPushButton(tr("Дата"),this);
+    ui->toolBar->addWidget(pastDate);
+    connect(pastDate, SIGNAL(clicked()), this, SLOT(action_pastDate()));
+
+    QPushButton *pastTime = new QPushButton(tr("Время"),this);
+    ui->toolBar->addWidget(pastTime);
+    connect(pastTime, SIGNAL(clicked()), this, SLOT(action_pastTime()));
 }
 
 TextEditor::~TextEditor()
@@ -277,6 +287,21 @@ void TextEditor::action_copyFormat()
 void TextEditor::action_pastFormat()
 {
     ui->textEdit->textCursor().setCharFormat(frmt);
+}
+
+void TextEditor::action_pastDate()
+{
+    QDate today = QDate::currentDate();
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.insertText(" " + today.toString("dd.MM.yyyy") + " ");
+
+}
+
+void TextEditor::action_pastTime()
+{
+    QTime now = QTime::currentTime();
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.insertText(" " + now.toString("H.mm") + " ");
 }
 
 
