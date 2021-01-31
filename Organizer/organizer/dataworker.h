@@ -16,23 +16,28 @@
 class DataWorker : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int taskCounter READ getCounter NOTIFY taskValueChange)
 public:
     explicit DataWorker(QObject *parent = nullptr);
 
     Q_INVOKABLE void addData(int, QString, int, QString, int);
 
+    int getCounter();
+
 signals:
     void addTask();
+
+    void taskValueChange(int); // Сигнал о изменении количества задач
+
+    void mistakeSend(); // Сигнал если введены не валидные значения
 
 private slots:
     void preLoadData();
     void saveData();
 
 private:
-QList<taskData> allTask;
-
-
-
+    QList<taskData> allTask;
+    int taskCounter = 0;
 };
 
 #endif // DATEWORKER_H
