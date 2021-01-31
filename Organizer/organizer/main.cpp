@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
 
-
     qmlRegisterType<DataWorker>("DataWorker", 1 ,0 , "DataWorker");
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));

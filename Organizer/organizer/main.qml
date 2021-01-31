@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
+import QtQuick.Dialogs 1.2
 
 import DataWorker 1.0
 
@@ -12,14 +13,22 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
+    // Диалоговое окно об ошибке
+    MessageDialog {
+        id: _error
+        text: "Задача не введена"
+        informativeText: "Введите задачу для записи данных в файл"
+    }
+
     DataWorker{
         id: _DataWorker
 
+        // Подключаем сигнал из C++ к выводу окна об ошибке
+        onMistakeSend:{
+        console.log("EnemyTask")
+        _error.open()
+        }
     }
-
-//    Component.onCompleted: {
-//        _DataWorker.saveD();
-//    }
 
 
     AcceptButton{
@@ -30,10 +39,8 @@ Window {
         anchors.margins: parent.height / 35
 
         //Запись задачи в таск-лист, вызов метода addData
-        onClicked: {console.log("Clicked2  " + _progress.currentIndex);
-                    _DataWorker.addData(_calendar.day, _calendar.mouth, _calendar.year, _edit.text, _progress.currentIndex  );
+        onClicked: {_DataWorker.addData(_calendar.day, _calendar.mouth, _calendar.year, _edit.text, _progress.currentIndex);
         }
-
     }
 
     Text{
@@ -91,6 +98,22 @@ Window {
         anchors.margins: 10
     }
 
+    Text{
+        id: _counterName
+        text: qsTr("Всего задач")
+        font.pointSize: 12
+        anchors.verticalCenter: _button.bottom
+        x: 10
+    }
+    Text{
+        id: _counter
+        text: _DataWorker.taskCounter
+        font.pointSize: 12
+        anchors.verticalCenter: _counterName.verticalCenter
+        anchors.left: _counterName.right
+        anchors.margins: 10
+        x: 10
+    }
 
 
 }

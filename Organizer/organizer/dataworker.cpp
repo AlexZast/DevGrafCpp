@@ -2,6 +2,7 @@
 
 #include <QDataStream>
 
+
 // Конструктор который предзагружает данные из файла
 DataWorker::DataWorker(QObject *parent) : QObject(parent)
 {
@@ -12,9 +13,19 @@ DataWorker::DataWorker(QObject *parent) : QObject(parent)
 // Добавление новой задачи в лист задач.
 void DataWorker::addData(int d, QString m, int y, QString t, int p)
 {
-    taskData* newTask = new taskData(d, m, y, t, p);
+    // Проверка введенных значений, если бы даты и прогресс были бы не в виде тумблеров, проверялись бы тут же
+    if(t == ""){
+        qDebug() << "Enemy Task";
+        emit mistakeSend();
+        return;;
+    }
 
+
+    taskData* newTask = new taskData(d, m, y, t, p);
     allTask.push_back(*newTask);
+    taskCounter = allTask.size();
+
+    emit taskValueChange(taskCounter);
 
     // Для отслеживания и отладки)
     qDebug() << "Day:" << newTask->day << " Mouth:" << newTask->mouth<< " Year:" << newTask->year << " Task:" << newTask->task << " Progress:" << newTask->progress;
@@ -22,6 +33,13 @@ void DataWorker::addData(int d, QString m, int y, QString t, int p)
     //запись в файл
     emit addTask();
 
+}
+
+//для получения значения после загрузки данных
+int DataWorker::getCounter()
+{
+    taskCounter = allTask.size();
+    return taskCounter;
 }
 
 // Предзагрузка задач из файла в QList
@@ -52,7 +70,7 @@ void DataWorker::preLoadData()
             ++i;
         }
            file.close();
-}
+    }
 }
 
 
@@ -70,13 +88,6 @@ void DataWorker::saveData()
         output << n.day << n.mouth << n.year <<  n.task << n.progress;
         file.close();
     }
-
-
-
-
-
-
-
-
-
 }
+
+
