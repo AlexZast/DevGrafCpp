@@ -15,7 +15,7 @@
     </message>
     <message>
         <location filename="texteditor.ui" line="62"/>
-        <location filename="texteditor.cpp" line="180"/>
+        <location filename="texteditor.cpp" line="190"/>
         <source>Справка</source>
         <translation>Help</translation>
     </message>
@@ -179,6 +179,16 @@
         <location filename="texteditor.cpp" line="75"/>
         <source>Вставить форматирование</source>
         <translation>Past Format</translation>
+    </message>
+    <message>
+        <location filename="texteditor.cpp" line="83"/>
+        <source>Дата</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="texteditor.cpp" line="87"/>
+        <source>Время</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

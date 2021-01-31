@@ -4,6 +4,7 @@
 
 FSWidget::FSWidget(QWidget *parent)
 {
+    Q_UNUSED(parent)
     gridLay = new QGridLayout(this);        // создаем слой для компоновки
     this->setLayout(gridLay);               // устанавливаем слой на виджет
     tree = new QTreeView(this);

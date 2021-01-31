@@ -1,4 +1,4 @@
-QT       += core gui printsupport
+QT       += core gui printsupport testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,11 +12,13 @@ SOURCES += \
     fswidget.cpp \
     main.cpp \
     shortcut.cpp \
+    test_texteditor.cpp \
     texteditor.cpp
 
 HEADERS += \
     fswidget.h \
     shortcut.h \
+    test_texteditor.h \
     texteditor.h
 
 FORMS += \
