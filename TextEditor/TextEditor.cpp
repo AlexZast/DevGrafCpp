@@ -102,6 +102,11 @@ void TextEditor::loadStyle(QString stylePath)
     qApp->setStyleSheet(a);
 }
 
+QTextEdit* TextEditor::getText()
+{
+    return (ui->textEdit);
+}
+
 // Новый файл
 void TextEditor::on_action_8_triggered()
 {
@@ -229,7 +234,7 @@ void TextEditor::on_action_14_triggered()
     loadStyle(":/style/styleLight.txt");
 }
 
-// Печать фаyrtyrtйла
+// Печать файла
 void TextEditor::on_action_12_triggered()
 {
 QPrinter printer;

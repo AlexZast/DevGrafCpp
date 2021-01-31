@@ -26,6 +26,8 @@
 #include <QDate>
 #include <QTime>
 
+#include <QTextEdit>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TextEditor; }
@@ -40,6 +42,8 @@ public:
     ~TextEditor();
 
     void loadStyle(QString stylePath);
+
+    QTextEdit* getText();
 
 signals:
     void sendPointer(QMenu *p);
