@@ -16,13 +16,12 @@ Window {
     // Диалоговое окно об ошибке
     MessageDialog {
         id: _error
-        text: "Задача не введена"
+        text: "Задача не введена...                     "
         informativeText: "Введите задачу для записи данных в файл"
     }
 
     DataWorker{
         id: _DataWorker
-
         // Подключаем сигнал из C++ к выводу окна об ошибке
         onMistakeSend:{
         console.log("EnemyTask")
@@ -42,6 +41,20 @@ Window {
         onClicked: {_DataWorker.addData(_calendar.day, _calendar.mouth, _calendar.year, _edit.text, _progress.currentIndex);
         }
     }
+
+    AcceptButton{
+        id: _showbutton
+        text: qsTr("Вывести список задач")
+        anchors.verticalCenter: _button.verticalCenter
+        anchors.left: _button.right
+        anchors.margins: 10
+
+        //Запись задачи в таск-лист, вызов метода addData
+        onClicked: {_DataWorker.showTasks()}
+        }
+
+
+
 
     Text{
         id: _label

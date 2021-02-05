@@ -1,4 +1,5 @@
-QT += quick
+QT += gui quick sql \
+    widgets
 
 CONFIG += c++11
 
@@ -8,8 +9,7 @@ CONFIG += c++11
 
 SOURCES += \
         dataworker.cpp \
-        main.cpp \
-        taskdata.cpp
+        main.cpp
 
 RESOURCES += qml.qrc
 
@@ -27,5 +27,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 HEADERS += \
-    dataworker.h \
-    taskdata.h
+    dataworker.h
+
+FORMS +=

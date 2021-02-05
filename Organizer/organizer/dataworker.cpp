@@ -1,13 +1,17 @@
 #include "dataworker.h"
-
 #include <QDataStream>
-
 
 // Конструктор который предзагружает данные из файла
 DataWorker::DataWorker(QObject *parent) : QObject(parent)
 {
-    connect(this, SIGNAL(addTask()), this, SLOT(saveData()));
-    preLoadData();
+    //qDebug() << "create object DW";
+    sqlDatabaseInit();
+}
+
+DataWorker::~DataWorker()
+{
+    base.close();
+    //qDebug() << "Connect close;";
 }
 
 // Добавление новой задачи в лист задач.
@@ -15,78 +19,65 @@ void DataWorker::addData(int d, QString m, int y, QString t, int p)
 {
     // Проверка введенных значений, если бы даты и прогресс были бы не в виде тумблеров, проверялись бы тут же
     if(t == ""){
-        qDebug() << "Enemy Task";
+        //qDebug() << "Enemy Task";
         emit mistakeSend();
         return;;
     }
 
+    //Добавление задачи в SQL
+    QSqlQuery query;
+    QString insert = "INSERT INTO taskdata(task, date, progress) VALUES ('%1','%2','%3');";
+    QString date = "%1-%2-%3";
 
-    taskData* newTask = new taskData(d, m, y, t, p);
-    allTask.push_back(*newTask);
-    taskCounter = allTask.size();
+    query.exec(insert.arg(t).arg(date.arg(d).arg(m).arg(y)).arg(p));
+    emit taskValueChange(++taskCounter);
+}
 
-    emit taskValueChange(taskCounter);
+//Вывод задач записанных в базу данных
+void DataWorker::showTasks()
+{
+    QSqlRelationalTableModel *model;
+    model = new QSqlRelationalTableModel(this);
+    model->setTable("taskdata");
+    model->select();
+    model->setEditStrategy(QSqlTableModel::EditStrategy::OnFieldChange);
 
-    // Для отслеживания и отладки)
-    qDebug() << "Day:" << newTask->day << " Mouth:" << newTask->mouth<< " Year:" << newTask->year << " Task:" << newTask->task << " Progress:" << newTask->progress;
-
-    //запись в файл
-    emit addTask();
-
+    w.setModel(model);
+    w.resize(590,700);
+    w.setColumnWidth(1,250);
+    w.show();
 }
 
 //для получения значения после загрузки данных
 int DataWorker::getCounter()
 {
-    taskCounter = allTask.size();
     return taskCounter;
 }
 
-// Предзагрузка задач из файла в QList
-void DataWorker::preLoadData()
+//Инициация подключения к б.д. и получение общего числа записей
+void DataWorker::sqlDatabaseInit()
 {
-    QFile file("task.bin");
-    QDataStream output(&file);
+    // Предзагрузка
+    base = QSqlDatabase::addDatabase("QSQLITE");
+    base.setDatabaseName("task.db");
+    base.open();
 
-    if(file.open(QIODevice::ReadOnly))
+    //Создание таблицы для записи данных, если еще не создана
+     QSqlQuery query;
+    if(!query.exec("CREATE TABLE taskdata("
+                      "id	INTEGER NOT NULL UNIQUE,"
+                      "task	TEXT NOT NULL,"
+                      "date	TEXT NOT NULL,"
+                      "progress	INTEGER,"
+                      "PRIMARY KEY(id AUTOINCREMENT));"))
     {
-        int i = 0;
-        while(!output.atEnd())
-        {
-
-            int d;
-            QString m;
-            int y;
-            QString t;
-            int p;
-
-            output >> d >> m >> y >> t >> p;
-
-            taskData* newTask = new taskData(d, m, y, t, p);
-
-            allTask.push_back(*newTask);
-
-            qDebug() << "Задача №" << (i+1) << allTask.back().day << allTask.back().mouth << allTask.back().year << allTask.back().task << allTask.back().progress;
-            ++i;
-        }
-           file.close();
+        //qDebug() << "Create`s error  (file created early or other error)";
     }
-}
-
-
-// Запись последней добавленной задачи в файл.
-void DataWorker::saveData()
-{
-    //тут запись данных в файл
-    taskData n = allTask.back();
-
-    QFile file("task.bin");
-
-    QDataStream output(&file);
-    if(file.open(QIODevice::Append))
-    {
-        output << n.day << n.mouth << n.year <<  n.task << n.progress;
-        file.close();
+    // Получение количества уже записанных задач
+    query.exec("SELECT COUNT(id) FROM taskdata;");
+    if(query.next()){
+        taskCounter = query.value(0).toInt();
+        emit taskValueChange(taskCounter);
     }
 }
 
