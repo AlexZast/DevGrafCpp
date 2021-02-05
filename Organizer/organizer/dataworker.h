@@ -1,17 +1,18 @@
 /*
- * Отвечает за работу с задачами внесенными в QList. Добавлен метод предзагрузки задач из файла и дозаписи каждой новой задачи в файл.
- * Для задач создан отельных класс
+ * Отвечает за работу с задачами внесением и считыванием данных из SQL.
  */
-
 
 #ifndef DATEWORKER_H
 #define DATEWORKER_H
 
 #include <QObject>
-#include "taskdata.h"
 #include <QDebug>
 
-#include <QFile>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+
+#include <QTableView>
+#include <QSqlRelationalTableModel>
 
 class DataWorker : public QObject
 {
@@ -19,25 +20,23 @@ class DataWorker : public QObject
     Q_PROPERTY(int taskCounter READ getCounter NOTIFY taskValueChange)
 public:
     explicit DataWorker(QObject *parent = nullptr);
+    ~DataWorker();
 
     Q_INVOKABLE void addData(int, QString, int, QString, int);
+    Q_INVOKABLE void showTasks();
 
     int getCounter();
+    void sqlDatabaseInit();
 
 signals:
-    void addTask();
-
     void taskValueChange(int); // Сигнал о изменении количества задач
-
     void mistakeSend(); // Сигнал если введены не валидные значения
 
-private slots:
-    void preLoadData();
-    void saveData();
-
 private:
-    QList<taskData> allTask;
     int taskCounter = 0;
+    // Создание БД сделал в приват области что-бы подключение существовало пока запущено приложение
+    QSqlDatabase base;
+    QTableView w;
 };
 
 #endif // DATEWORKER_H
